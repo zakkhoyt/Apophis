@@ -46,7 +46,7 @@
  */
 
 #import <QuartzCore/CAEAGLLayer.h>
-#import "RosyWriterPreviewView.h"
+#import "VWWVideoPreviewView.h"
 #include "ShaderUtilities.h"
 
 enum {
@@ -55,7 +55,7 @@ enum {
     NUM_ATTRIBUTES
 };
 
-@implementation RosyWriterPreviewView
+@implementation VWWVideoPreviewView
 
 + (Class)layerClass 
 {
@@ -143,7 +143,7 @@ enum {
         oglContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
         if (!oglContext || ![EAGLContext setCurrentContext:oglContext]) {
             NSLog(@"Problem with OpenGL context.");
-            [self release];
+//            [self release];
             
             return nil;
         }
@@ -300,7 +300,7 @@ enum {
         videoTextureCache = 0;
     }
     
-    [super dealloc];
+//    [super dealloc];
 }
 
 @end

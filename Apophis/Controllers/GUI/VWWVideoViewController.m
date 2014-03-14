@@ -46,14 +46,25 @@
  */
 
 #import <QuartzCore/QuartzCore.h>
-#import "RosyWriterViewController.h"
+#import "VWWVideoViewController.h"
+#import "VWWSettingsTableViewController.h"
+
+//static NSString *VWWSegueVideoToSettings = @"VWWSegueVideoToSettings";
+
+@interface VWWVideoViewController ()<VWWVideoProcessorDelegate, VWWSettingsTableViewControllerDelegate>
+@property (nonatomic, strong) VWWSettingsTableViewController *settingsViewController;
+@property (nonatomic, weak) IBOutlet UIView *previewView;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *recordButton;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+
+@end
 
 //static inline double radians (double degrees) { return degrees * (M_PI / 180); }
 
-@implementation RosyWriterViewController
+@implementation VWWVideoViewController
 
-@synthesize previewView;
-@synthesize recordButton;
+//@synthesize previewView;
+//@synthesize recordButton;
 
 - (void)updateLabels
 {
@@ -88,7 +99,7 @@
 {
 	CGFloat labelWidth = 200.0;
 	CGFloat labelHeight = 40.0;
-	CGFloat xPosition = previewView.bounds.size.width - labelWidth - 10;
+	CGFloat xPosition = self.previewView.bounds.size.width - labelWidth - 10;
 	CGRect labelFrame = CGRectMake(xPosition, yPosition, labelWidth, labelHeight);
 	UILabel *label = [[UILabel alloc] initWithFrame:labelFrame];
 	[label setFont:[UIFont systemFontOfSize:36]];
@@ -99,7 +110,8 @@
 	[[label layer] setCornerRadius: 4];
 	[label setText:text];
 	
-	return [label autorelease];
+//	return [label autorelease];
+    return label;
 }
 
 - (void)applicationDidBecomeActive:(NSNotification*)notifcation
@@ -123,7 +135,7 @@
 	[super viewDidLoad];
     
     // Initialize the class responsible for managing AV capture session and asset writer
-    videoProcessor = [[RosyWriterVideoProcessor alloc] init];
+    videoProcessor = [[VWWVideoProcessor alloc] init];
 	videoProcessor.delegate = self;
     
 	// Keep track of changes to the device orientation so we can update the video processor
@@ -136,31 +148,31 @@
     
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:[UIApplication sharedApplication]];
     
-	oglView = [[RosyWriterPreviewView alloc] initWithFrame:CGRectZero];
+	oglView = [[VWWVideoPreviewView alloc] initWithFrame:CGRectZero];
 	// Our interface is always in portrait.
 	oglView.transform = [videoProcessor transformFromCurrentVideoOrientationToOrientation:(AVCaptureVideoOrientation)UIInterfaceOrientationPortrait];
-    [previewView addSubview:oglView];
+    [self.previewView addSubview:oglView];
  	CGRect bounds = CGRectZero;
  	bounds.size = [self.previewView convertRect:self.previewView.bounds toView:oglView].size;
  	oglView.bounds = bounds;
-    oglView.center = CGPointMake(previewView.bounds.size.width/2.0, previewView.bounds.size.height/2.0);
+    oglView.center = CGPointMake(self.previewView.bounds.size.width/2.0, self.previewView.bounds.size.height/2.0);
  	
  	// Set up labels
  	shouldShowStats = YES;
 	
 	frameRateLabel = [self labelWithText:@"" yPosition: (CGFloat) 10.0];
-	[previewView addSubview:frameRateLabel];
+	[self.previewView addSubview:frameRateLabel];
 	
 	dimensionsLabel = [self labelWithText:@"" yPosition: (CGFloat) 54.0];
-	[previewView addSubview:dimensionsLabel];
+	[self.previewView addSubview:dimensionsLabel];
 	
 	typeLabel = [self labelWithText:@"" yPosition: (CGFloat) 98.0];
-	[previewView addSubview:typeLabel];
+	[self.previewView addSubview:typeLabel];
 }
 
 - (void)cleanup
 {
-	[oglView release];
+//	[oglView release];
 	oglView = nil;
     
     frameRateLabel = nil;
@@ -176,7 +188,7 @@
     // Stop and tear down the capture session
 	[videoProcessor stopAndTearDownCaptureSession];
 	videoProcessor.delegate = nil;
-    [videoProcessor release];
+//    [videoProcessor release];
 }
 
 - (void)viewDidUnload
@@ -205,8 +217,25 @@
 {
 	[self cleanup];
     
-	[super dealloc];
+//	[super dealloc];
 }
+
+#pragma mark IBActions
+- (IBAction)settingsButtonTouchUpInside:(id)sender {
+    
+    if(self.settingsViewController == nil){
+        self.settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VWWSettingsTableViewController"];
+        self.settingsViewController.delegate = self;
+        self.settingsViewController.view.hidden = YES;
+    }
+    
+    if(self.settingsViewController.view.hidden == YES){
+        [self showChildViewController:self.settingsViewController];
+    } else {
+        [self hideChildViewController:self.settingsViewController];
+    }
+}
+
 
 - (IBAction)toggleRecording:(id)sender
 {
@@ -281,6 +310,60 @@
 	// Don't make OpenGLES calls while in the background.
 	if ( [UIApplication sharedApplication].applicationState != UIApplicationStateBackground )
 		[oglView displayPixelBuffer:pixelBuffer];
+}
+
+
+
+
+
+-(void)showChildViewController:(UIViewController*)vc{
+    
+    
+    // Set view
+//    CGFloat w = 120;
+//    CGFloat h = self.view.bounds.size.height;
+//    CGFloat x = self.view.bounds.size.width - w;
+//    CGFloat y = 0;
+    CGFloat w = self.view.bounds.size.width;;
+    CGFloat h = (self.view.bounds.size.height - self.toolbar.bounds.size.height) / 2.0;
+    CGFloat x = 0;
+    CGFloat y = (self.view.bounds.size.height - self.toolbar.bounds.size.height) / 2.0;
+
+    CGRect frameForView = CGRectMake(x, y, w, h);
+    VWW_LOG_DEBUG(@"Child VC frame: %@", NSStringFromCGRect(frameForView));
+    
+    
+    UIView *view = vc.view;
+    view.frame = frameForView;
+    view.alpha = 0.0;
+    
+    
+    
+    [self addChildViewController:vc];
+    [self.view addSubview:vc.view];
+    [vc didMoveToParentViewController:self];
+    
+    vc.view.hidden = NO;
+    [UIView animateWithDuration:0.3 animations:^{
+        view.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+-(void)hideChildViewController:(UIViewController*)vc{
+    
+    if(vc == nil) return;
+    if(vc.view.hidden == YES) return;
+    
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        vc.view.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        vc.view.hidden = YES;
+        [vc removeFromParentViewController];
+    }];
+    
 }
 
 @end

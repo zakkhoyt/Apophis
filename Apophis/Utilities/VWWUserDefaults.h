@@ -10,32 +10,33 @@
 
 @interface VWWUserDefaults : NSObject
 
-+(BOOL)logGPS;
-+(void)setLogGPS:(BOOL)log;
-
-+(BOOL)logHeading;
-+(void)setLogHeading:(BOOL)log;
-
-+(BOOL)logAccelerometers;
-+(void)setLogAccelerometers:(BOOL)log;
-
-+(BOOL)logGyroscopes;
-+(void)setLogGyroscopes:(BOOL)log;
-
-+(BOOL)logMagnetometers;
-+(void)setLogMagnetometers:(BOOL)log;
-
-+(BOOL)logAttitude;
-+(void)setLogAttitude:(BOOL)log;
-
-+(BOOL)overlayDataOnVideo;
-+(void)setOverlayDataOnVideo:(BOOL)overlay;
-
-+(NSUInteger)updateFrequency;
-+(void)setUpdateFrequency:(NSUInteger)updateFrequency;
 
 
++(BOOL)filterRedPixels;
++(void)setFilterRedPixels:(BOOL)filter;
 
++(BOOL)filterGreenPixels;
++(void)setFilterGreenPixels:(BOOL)filter;
 
++(BOOL)filterBluePixels;
++(void)setFilterBluePixels:(BOOL)filter;
+
++(NSUInteger)redThreshold;
++(void)setRedThreshold:(NSUInteger)threshold;
+
++(NSUInteger)greenThreshold;
++(void)setGreenThreshold:(NSUInteger)threshold;
+
++(NSUInteger)blueThreshold;
++(void)setBlueThreshold:(NSUInteger)threshold;
+
++(NSUInteger)redCompare;
++(void)setRedCompare:(NSUInteger)compare;
+
++(NSUInteger)greenCompare;
++(void)setGreenCompare:(NSUInteger)compare;
+
++(NSUInteger)blueCompare;
++(void)setBlueCompare:(NSUInteger)compare;
 
 @end

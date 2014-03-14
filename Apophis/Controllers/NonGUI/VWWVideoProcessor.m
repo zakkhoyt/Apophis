@@ -47,11 +47,11 @@
 
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "RosyWriterVideoProcessor.h"
+#import "VWWVideoProcessor.h"
 
 #define BYTES_PER_PIXEL 4
 
-@interface RosyWriterVideoProcessor (){
+@interface VWWVideoProcessor (){
 	
 	NSMutableArray *previousSecondTimestamps;
 	AVCaptureSession *captureSession;
@@ -87,7 +87,7 @@
 
 @end
 
-@implementation RosyWriterVideoProcessor
+@implementation VWWVideoProcessor
 
 
 @synthesize delegate;
@@ -104,18 +104,18 @@
         
         // The temporary path for the video before saving it to the photo album
         movieURL = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@%@", NSTemporaryDirectory(), @"Movie.MOV"]];
-        [movieURL retain];
+//        [movieURL retain];
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [previousSecondTimestamps release];
-    [movieURL release];
-    
-	[super dealloc];
-}
+//- (void)dealloc
+//{
+//    [previousSecondTimestamps release];
+//    [movieURL release];
+//    
+//	[super dealloc];
+//}
 
 #pragma mark Utilities
 
@@ -203,7 +203,7 @@
 										[self.delegate recordingDidStop];
 									});
 								}];
-	[library release];
+//	[library release];
 }
 
 - (void) writeSampleBuffer:(CMSampleBufferRef)sampleBuffer ofType:(NSString *)mediaType
@@ -366,9 +366,9 @@
                 [self saveMovieToCameraRoll];
             }
             
-			[assetWriterAudioIn release];
-			[assetWriterVideoIn release];
-			[assetWriter release];
+//			[assetWriterAudioIn release];
+//			[assetWriterVideoIn release];
+//			[assetWriter release];
             assetWriter = nil;
 			readyToRecordVideo = NO;
 			readyToRecordAudio = NO;
@@ -389,12 +389,24 @@
 	for( int row = 0; row < bufferHeight; row++ ) {
 		for( int column = 0; column < bufferWidth; column++ ) {
 			//pixel[1] = 0; // De-green (second pixel in BGRA is green)
-            if(pixel[0] < 0x50){
+            if(pixel[0] < 0x30){
                 pixel[0] = 0x00;
                 pixel[1] = 0xFF;
                 pixel[2] = 0x00;
 //                pixel[3] = 0x00;
             }
+//            if([VWWUserDefaults filterRedPixels]){
+//                if([VWWUserDefaults redCompare] == 0){
+//                    
+//                } else {
+//                    
+//                }
+//            }
+            
+            
+            
+            
+            
 			pixel += BYTES_PER_PIXEL;
 		}
 	}
@@ -527,16 +539,16 @@
     AVCaptureDeviceInput *audioIn = [[AVCaptureDeviceInput alloc] initWithDevice:[self audioDevice] error:nil];
     if ([captureSession canAddInput:audioIn])
         [captureSession addInput:audioIn];
-	[audioIn release];
+//	[audioIn release];
 	
 	AVCaptureAudioDataOutput *audioOut = [[AVCaptureAudioDataOutput alloc] init];
 	dispatch_queue_t audioCaptureQueue = dispatch_queue_create("Audio Capture Queue", DISPATCH_QUEUE_SERIAL);
 	[audioOut setSampleBufferDelegate:self queue:audioCaptureQueue];
-	dispatch_release(audioCaptureQueue);
+//	dispatch_release(audioCaptureQueue);
 	if ([captureSession canAddOutput:audioOut])
 		[captureSession addOutput:audioOut];
 	audioConnection = [audioOut connectionWithMediaType:AVMediaTypeAudio];
-	[audioOut release];
+//	[audioOut release];
     
 	/*
 	 * Create video connection
@@ -544,7 +556,7 @@
     AVCaptureDeviceInput *videoIn = [[AVCaptureDeviceInput alloc] initWithDevice:[self videoDeviceWithPosition:AVCaptureDevicePositionBack] error:nil];
     if ([captureSession canAddInput:videoIn])
         [captureSession addInput:videoIn];
-	[videoIn release];
+//	[videoIn release];
     
 	AVCaptureVideoDataOutput *videoOut = [[AVCaptureVideoDataOutput alloc] init];
 	/*
@@ -557,12 +569,12 @@
 	[videoOut setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA] forKey:(id)kCVPixelBufferPixelFormatTypeKey]];
 	dispatch_queue_t videoCaptureQueue = dispatch_queue_create("Video Capture Queue", DISPATCH_QUEUE_SERIAL);
 	[videoOut setSampleBufferDelegate:self queue:videoCaptureQueue];
-	dispatch_release(videoCaptureQueue);
+//	dispatch_release(videoCaptureQueue);
 	if ([captureSession canAddOutput:videoOut])
 		[captureSession addOutput:videoOut];
 	videoConnection = [videoOut connectionWithMediaType:AVMediaTypeVideo];
 	self.videoOrientation = [videoConnection videoOrientation];
-	[videoOut release];
+//	[videoOut release];
     
 	return YES;
 }
@@ -613,14 +625,14 @@
     [captureSession stopRunning];
 	if (captureSession)
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:AVCaptureSessionDidStopRunningNotification object:captureSession];
-	[captureSession release];
+//	[captureSession release];
 	captureSession = nil;
 	if (previewBufferQueue) {
 		CFRelease(previewBufferQueue);
 		previewBufferQueue = NULL;
 	}
 	if (movieWritingQueue) {
-		dispatch_release(movieWritingQueue);
+//		dispatch_release(movieWritingQueue);
 		movieWritingQueue = NULL;
 	}
 }
@@ -636,7 +648,7 @@
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
         [alertView show];
-        [alertView release];
+//        [alertView release];
     });
 }
 

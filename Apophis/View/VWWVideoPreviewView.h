@@ -1,7 +1,7 @@
 /*
- File: RosyWriterViewController.h
- Abstract: View controller for camera interface
- Version: 1.2
+     File: RosyWriterPreviewView.h
+ Abstract: The OpenGL ES view, responsible for creating a CVOpenGLESTexture from each CVImageBuffer and displaying the texture on the screen.
+  Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -45,31 +45,27 @@
  
  */
 
-#import <AVFoundation/AVFoundation.h>
-#import "RosyWriterPreviewView.h"
-#import "RosyWriterVideoProcessor.h"
+#import <UIKit/UIKit.h>
+#import <OpenGLES/EAGL.h>
+#import <OpenGLES/EAGLDrawable.h>
+#import <OpenGLES/ES2/glext.h>
+#import <CoreVideo/CVOpenGLESTextureCache.h>
 
-@interface RosyWriterViewController : UIViewController <RosyWriterVideoProcessorDelegate>
+@interface VWWVideoPreviewView : UIView 
 {
-    RosyWriterVideoProcessor *videoProcessor;
+	int renderBufferWidth;
+	int renderBufferHeight;
     
-	UIView *previewView;
-    RosyWriterPreviewView *oglView;
-    UIBarButtonItem *recordButton;
-	UILabel *frameRateLabel;
-	UILabel *dimensionsLabel;
-	UILabel *typeLabel;
-    
-    NSTimer *timer;
-    
-	BOOL shouldShowStats;
-	
-	UIBackgroundTaskIdentifier backgroundRecordingID;
+	CVOpenGLESTextureCacheRef videoTextureCache;    
+
+	EAGLContext* oglContext;
+	GLuint frameBufferHandle;
+	GLuint colorBufferHandle;
+    GLuint passThroughProgram;
 }
 
-@property (nonatomic, retain) IBOutlet UIView *previewView;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *recordButton;
-
-- (IBAction)toggleRecording:(id)sender;
+- (void)displayPixelBuffer:(CVImageBufferRef)pixelBuffer;
 
 @end
+
+

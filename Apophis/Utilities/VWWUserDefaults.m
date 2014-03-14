@@ -8,92 +8,109 @@
 
 #import "VWWUserDefaults.h"
 
-static NSString *VWWUserDefaultsLogGPSKey = @"logGPS";
-static NSString *VWWUserDefaultsLogHeadingKey = @"logHeading";
-static NSString *VWWUserDefaultsLogAccelerometersKey = @"logAccelerometers";
-static NSString *VWWUserDefaultsLogGryoscopesKey = @"logGyroscopes";
-static NSString *VWWUserDefaultsLogMagnetometersKey = @"logMagnetometers";
-static NSString *VWWUserDefaultsLogAttitudeKey = @"logAttitude";
-static NSString *VWWUserDefaultsLogOverlayDataOnVideoKey = @"overlayDataOnVideo";
-static NSString *VWWUserDefaultsUnitsKey = @"units";
-static NSString *VWWUserDefaultsOffsetKey = @"offset";
-static NSString *VWWUserDefaultsUpdateFrequencyKey = @"updateFrequency";
+
+static NSString *VWWUserDefaultsFilterRedKey = @"filterRed";
+static NSString *VWWUserDefaultsFilterGreenKey = @"filterGreen";
+static NSString *VWWUserDefaultsFilterBlueKey = @"filterBlue";
+
+static NSString *VWWUserDefaultsRedThesholdKey = @"redThreshold";
+static NSString *VWWUserDefaultsGreenThesholdKey = @"greenThreshold";
+static NSString *VWWUserDefaultsBlueThesholdKey = @"blueThreshold";
+
+static NSString *VWWUserDefaultsRedCompareKey = @"redCompare";
+static NSString *VWWUserDefaultsGreenCompareKey = @"greenCompare";
+static NSString *VWWUserDefaultsBlueCompareKey = @"blueCompare";
+
 
 
 @implementation VWWUserDefaults
 
-+(BOOL)logGPS{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsLogGPSKey];
-}
-+(void)setLogGPS:(BOOL)log{
-    [[NSUserDefaults standardUserDefaults] setBool:log forKey:VWWUserDefaultsLogGPSKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
 
-+(BOOL)logHeading{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsLogHeadingKey];
+
+
++(BOOL)filterRedPixels{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsFilterRedKey];
 }
-+(void)setLogHeading:(BOOL)log{
-    [[NSUserDefaults standardUserDefaults] setBool:log forKey:VWWUserDefaultsLogHeadingKey];
++(void)setFilterRedPixels:(BOOL)filter{
+    [[NSUserDefaults standardUserDefaults] setBool:filter forKey:VWWUserDefaultsFilterRedKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 
-+(BOOL)logAccelerometers{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsLogAccelerometersKey];
++(BOOL)filterGreenPixels{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsFilterGreenKey];
 }
-+(void)setLogAccelerometers:(BOOL)log{
-    [[NSUserDefaults standardUserDefaults] setBool:log forKey:VWWUserDefaultsLogAccelerometersKey];
++(void)setFilterGreenPixels:(BOOL)filter{
+    [[NSUserDefaults standardUserDefaults] setBool:filter forKey:VWWUserDefaultsFilterGreenKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 
-+(BOOL)logGyroscopes{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsLogGryoscopesKey];
++(BOOL)filterBluePixels{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsFilterBlueKey];
 }
-+(void)setLogGyroscopes:(BOOL)log{
-    [[NSUserDefaults standardUserDefaults] setBool:log forKey:VWWUserDefaultsLogGryoscopesKey];
++(void)setFilterBluePixels:(BOOL)filter{
+    [[NSUserDefaults standardUserDefaults] setBool:filter forKey:VWWUserDefaultsFilterBlueKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 
-+(BOOL)logMagnetometers{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsLogMagnetometersKey];
++(NSUInteger)redThreshold{
+    NSNumber *thresholdNumber = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsRedThesholdKey];
+    return thresholdNumber == nil ? 0x80 : thresholdNumber.unsignedIntegerValue;
 }
-+(void)setLogMagnetometers:(BOOL)log{
-    [[NSUserDefaults standardUserDefaults] setBool:log forKey:VWWUserDefaultsLogMagnetometersKey];
++(void)setRedThreshold:(NSUInteger)threshold{
+    [[NSUserDefaults standardUserDefaults] setObject:@(threshold) forKey:VWWUserDefaultsRedThesholdKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++(NSUInteger)greenThreshold{
+    NSNumber *thresholdNumber = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsGreenThesholdKey];
+    return thresholdNumber == nil ? 0x80 : thresholdNumber.unsignedIntegerValue;
+}
++(void)setGreenThreshold:(NSUInteger)threshold{
+    [[NSUserDefaults standardUserDefaults] setObject:@(threshold) forKey:VWWUserDefaultsGreenThesholdKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 
-+(BOOL)logAttitude{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsLogAttitudeKey];
++(NSUInteger)blueThreshold{
+    NSNumber *thresholdNumber = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsBlueThesholdKey];
+    return thresholdNumber == nil ? 0x80 : thresholdNumber.unsignedIntegerValue;
 }
-+(void)setLogAttitude:(BOOL)log{
-    [[NSUserDefaults standardUserDefaults] setBool:log forKey:VWWUserDefaultsLogAttitudeKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-+(BOOL)overlayDataOnVideo{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsLogOverlayDataOnVideoKey];
-}
-+(void)setOverlayDataOnVideo:(BOOL)overlay{
-    [[NSUserDefaults standardUserDefaults] setBool:overlay forKey:VWWUserDefaultsLogOverlayDataOnVideoKey];
++(void)setBlueThreshold:(NSUInteger)threshold{
+    [[NSUserDefaults standardUserDefaults] setObject:@(threshold) forKey:VWWUserDefaultsBlueThesholdKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 
-+(NSUInteger)updateFrequency{
-    NSNumber *updateFrequencyNumber = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsUpdateFrequencyKey];
-    return updateFrequencyNumber == nil ? 2 : updateFrequencyNumber.unsignedIntegerValue;
++(NSUInteger)redCompare{
+    NSNumber *compareNumber = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsRedCompareKey];
+    return compareNumber == nil ? 0x80 : compareNumber.unsignedIntegerValue;
 }
-+(void)setUpdateFrequency:(NSUInteger)updateFrequency{
-    [[NSUserDefaults standardUserDefaults] setObject:@(updateFrequency) forKey:VWWUserDefaultsUpdateFrequencyKey];
++(void)setRedCompare:(NSUInteger)compare{
+    [[NSUserDefaults standardUserDefaults] setObject:@(compare) forKey:VWWUserDefaultsRedCompareKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 
++(NSUInteger)greenCompare{
+    NSNumber *compareNumber = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsGreenCompareKey];
+    return compareNumber == nil ? 0x80 : compareNumber.unsignedIntegerValue;
+}
++(void)setGreenCompare:(NSUInteger)compare{
+    [[NSUserDefaults standardUserDefaults] setObject:@(compare) forKey:VWWUserDefaultsGreenCompareKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 
++(NSUInteger)blueCompare{
+    NSNumber *compareNumber = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsBlueCompareKey];
+    return compareNumber == nil ? 0x80 : compareNumber.unsignedIntegerValue;
+}
++(void)setBlueCompare:(NSUInteger)compare{
+    [[NSUserDefaults standardUserDefaults] setObject:@(compare) forKey:VWWUserDefaultsBlueCompareKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 @end

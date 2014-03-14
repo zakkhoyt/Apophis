@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Rosy Writer View Controller-->
+        <!--Video View Controller-->
         <scene sceneID="UBG-oJ-fLd">
             <objects>
-                <viewController id="b6e-Z1-zIc" customClass="RosyWriterViewController" sceneMemberID="viewController">
+                <viewController id="b6e-Z1-zIc" customClass="VWWVideoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7PV-gQ-ert"/>
                         <viewControllerLayoutGuide type="bottom" id="6r2-KD-kgA"/>
@@ -16,19 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ko7-RD-SuV">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ko7-RD-SuV">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xzy-7O-KTX">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xzy-7O-KTX">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rMw-1R-hur"/>
-                                    <barButtonItem title="Record" width="62" id="Dk7-WY-H8z">
+                                    <barButtonItem title="Settings" width="110" id="Dk7-WY-H8z">
                                         <connections>
-                                            <action selector="toggleRecording:" destination="b6e-Z1-zIc" id="RXe-DS-glh"/>
+                                            <action selector="settingsButtonTouchUpInside:" destination="b6e-Z1-zIc" id="3Gm-ww-o2w"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="dgP-t0-mWF"/>
@@ -36,15 +36,187 @@
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Xzy-7O-KTX" firstAttribute="leading" secondItem="W8e-gt-blS" secondAttribute="leading" id="08o-eV-Rqv"/>
+                            <constraint firstItem="6r2-KD-kgA" firstAttribute="top" secondItem="Xzy-7O-KTX" secondAttribute="bottom" id="M0w-Xg-LCo"/>
+                            <constraint firstItem="ko7-RD-SuV" firstAttribute="top" secondItem="W8e-gt-blS" secondAttribute="top" id="RIK-t3-jNX"/>
+                            <constraint firstItem="ko7-RD-SuV" firstAttribute="leading" secondItem="W8e-gt-blS" secondAttribute="leading" id="aUA-KH-Msw"/>
+                            <constraint firstAttribute="bottom" secondItem="ko7-RD-SuV" secondAttribute="bottom" id="hes-fV-AHv"/>
+                            <constraint firstAttribute="trailing" secondItem="Xzy-7O-KTX" secondAttribute="trailing" id="qrB-8l-xvB"/>
+                            <constraint firstAttribute="trailing" secondItem="ko7-RD-SuV" secondAttribute="trailing" id="yrh-Oa-IbP"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="IHt-vq-1NE"/>
                     <connections>
                         <outlet property="previewView" destination="ko7-RD-SuV" id="ho5-8v-fHK"/>
-                        <outlet property="recordButton" destination="Dk7-WY-H8z" id="RzX-z1-7Wk"/>
+                        <outlet property="toolbar" destination="Xzy-7O-KTX" id="ONb-0W-wh3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXh-Ja-X2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="414" y="140"/>
+            <point key="canvasLocation" x="940" y="140"/>
+        </scene>
+        <!--Settings Table View Controller-->
+        <scene sceneID="51b-kR-E5s">
+            <objects>
+                <tableViewController storyboardIdentifier="VWWSettingsTableViewController" id="F57-Tv-DWu" customClass="VWWSettingsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="AL3-Sv-wMq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="SjE-ia-b1g">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="83" id="t9d-PJ-u2p">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t9d-PJ-u2p" id="jyq-PE-7kY">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Red" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gn5-f0-d2e">
+                                                    <rect key="frame" x="10" y="11" width="32" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="BdW-6A-1lW">
+                                                    <rect key="frame" x="18" y="45" width="284" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="redSliderValueChanged:" destination="F57-Tv-DWu" eventType="valueChanged" id="sSm-R0-gHr"/>
+                                                    </connections>
+                                                </slider>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vmZ-1U-MZ2">
+                                                    <rect key="frame" x="251" y="6" width="51" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="redSwitchValueChanged:" destination="F57-Tv-DWu" eventType="valueChanged" id="1mW-vo-6nb"/>
+                                                    </connections>
+                                                </switch>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pBS-VS-O28">
+                                                    <rect key="frame" x="65" y="8" width="178" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <segments>
+                                                        <segment title="&lt;"/>
+                                                        <segment title=">"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="redSegmentValueChanged:" destination="F57-Tv-DWu" eventType="valueChanged" id="kao-OW-kQN"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="83" id="xsG-hB-F1y">
+                                        <rect key="frame" x="0.0" y="83" width="320" height="83"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xsG-hB-F1y" id="fl4-g7-Ppr">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Green" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9I-wk-BzU">
+                                                    <rect key="frame" x="10" y="11" width="47" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="W4W-r4-hns">
+                                                    <rect key="frame" x="18" y="45" width="284" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="greenSliderValueChanged:" destination="F57-Tv-DWu" eventType="valueChanged" id="rXC-Jd-dsR"/>
+                                                    </connections>
+                                                </slider>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qov-hE-h6W">
+                                                    <rect key="frame" x="251" y="6" width="51" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="greenSwitchValueChanged:" destination="F57-Tv-DWu" eventType="valueChanged" id="OLl-Uy-USA"/>
+                                                    </connections>
+                                                </switch>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7D7-jh-Y4f">
+                                                    <rect key="frame" x="65" y="8" width="178" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <segments>
+                                                        <segment title="&lt;"/>
+                                                        <segment title=">"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="greenSegmentValueChanged:" destination="F57-Tv-DWu" eventType="valueChanged" id="VRC-6u-eZb"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="83" id="XNf-5i-DcD">
+                                        <rect key="frame" x="0.0" y="166" width="320" height="83"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XNf-5i-DcD" id="o0Y-Tq-ajy">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Blue" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCs-b7-idt">
+                                                    <rect key="frame" x="10" y="11" width="35" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="2h5-tn-myR">
+                                                    <rect key="frame" x="18" y="45" width="284" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="blueSliderValueChanged:" destination="F57-Tv-DWu" eventType="valueChanged" id="Hqc-yy-Ptl"/>
+                                                    </connections>
+                                                </slider>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gIT-Q0-0ZZ">
+                                                    <rect key="frame" x="251" y="6" width="51" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="blueSwitchValueChanged:" destination="F57-Tv-DWu" eventType="valueChanged" id="dvJ-bH-DfT"/>
+                                                    </connections>
+                                                </switch>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hOb-2l-DDy">
+                                                    <rect key="frame" x="65" y="8" width="178" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <segments>
+                                                        <segment title="&lt;"/>
+                                                        <segment title=">"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="blueSegmentValueChanged:" destination="F57-Tv-DWu" eventType="valueChanged" id="2Er-ge-ADE"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="F57-Tv-DWu" id="xvR-vm-a5c"/>
+                            <outlet property="delegate" destination="F57-Tv-DWu" id="bpZ-Yx-I2f"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Fnj-rR-ibh"/>
+                    <connections>
+                        <outlet property="blueSegment" destination="hOb-2l-DDy" id="7sn-bw-wVq"/>
+                        <outlet property="blueSlider" destination="2h5-tn-myR" id="9my-4K-mjH"/>
+                        <outlet property="blueSwitch" destination="gIT-Q0-0ZZ" id="UqF-Mr-rTZ"/>
+                        <outlet property="greenSegment" destination="7D7-jh-Y4f" id="Dlz-7y-GAj"/>
+                        <outlet property="greenSlider" destination="W4W-r4-hns" id="TBn-Zl-1gC"/>
+                        <outlet property="greenSwitch" destination="qov-hE-h6W" id="Ell-8B-cFx"/>
+                        <outlet property="redSegment" destination="pBS-VS-O28" id="2Rf-bH-Y6d"/>
+                        <outlet property="redSlider" destination="BdW-6A-1lW" id="9Dm-gu-krH"/>
+                        <outlet property="redSwitch" destination="vmZ-1U-MZ2" id="eYO-QQ-EWe"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qBH-Z5-I12" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1380" y="140"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

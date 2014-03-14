@@ -4,12 +4,12 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMedia/CMBufferQueue.h>
 
-@protocol RosyWriterVideoProcessorDelegate;
+@protocol VWWVideoProcessorDelegate;
 
-@interface RosyWriterVideoProcessor : NSObject <AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface VWWVideoProcessor : NSObject <AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
 
 
-@property (readwrite, assign) id <RosyWriterVideoProcessorDelegate> delegate;
+@property (readwrite, assign) id <VWWVideoProcessorDelegate> delegate;
 
 @property (readonly) Float64 videoFrameRate;
 @property (readonly) CMVideoDimensions videoDimensions;
@@ -32,7 +32,7 @@
 - (void) resumeCaptureSession;
 @end
 
-@protocol RosyWriterVideoProcessorDelegate <NSObject>
+@protocol VWWVideoProcessorDelegate <NSObject>
 @required
 - (void)pixelBufferReadyForDisplay:(CVPixelBufferRef)pixelBuffer;	// This method is always called on the main thread.
 - (void)recordingWillStart;

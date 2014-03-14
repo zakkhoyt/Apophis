@@ -1,7 +1,7 @@
 /*
-     File: RosyWriterPreviewView.h
- Abstract: The OpenGL ES view, responsible for creating a CVOpenGLESTexture from each CVImageBuffer and displaying the texture on the screen.
-  Version: 1.2
+ File: RosyWriterViewController.h
+ Abstract: View controller for camera interface
+ Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -45,27 +45,29 @@
  
  */
 
-#import <UIKit/UIKit.h>
-#import <OpenGLES/EAGL.h>
-#import <OpenGLES/EAGLDrawable.h>
-#import <OpenGLES/ES2/glext.h>
-#import <CoreVideo/CVOpenGLESTextureCache.h>
+#import <AVFoundation/AVFoundation.h>
+#import "VWWVideoPreviewView.h"
+#import "VWWVideoProcessor.h"
 
-@interface RosyWriterPreviewView : UIView 
+@interface VWWVideoViewController : UIViewController 
 {
-	int renderBufferWidth;
-	int renderBufferHeight;
+    VWWVideoProcessor *videoProcessor;
     
-	CVOpenGLESTextureCacheRef videoTextureCache;    
-
-	EAGLContext* oglContext;
-	GLuint frameBufferHandle;
-	GLuint colorBufferHandle;
-    GLuint passThroughProgram;
+//	UIView *previewView;
+    VWWVideoPreviewView *oglView;
+//    UIBarButtonItem *recordButton;
+	UILabel *frameRateLabel;
+	UILabel *dimensionsLabel;
+	UILabel *typeLabel;
+    
+    NSTimer *timer;
+    
+	BOOL shouldShowStats;
+	
+	UIBackgroundTaskIdentifier backgroundRecordingID;
 }
 
-- (void)displayPixelBuffer:(CVImageBufferRef)pixelBuffer;
+
+- (IBAction)toggleRecording:(id)sender;
 
 @end
-
-
