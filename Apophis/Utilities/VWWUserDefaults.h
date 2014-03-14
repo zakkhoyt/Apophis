@@ -39,4 +39,16 @@
 +(NSUInteger)blueCompare;
 +(void)setBlueCompare:(NSUInteger)compare;
 
++(NSUInteger)compare;
++(void)setCompare:(NSUInteger)compare;
+
++(NSUInteger)color;
++(void)setColor:(NSUInteger)color;
+
++(NSUInteger)threshold;
++(void)setThreshold:(NSUInteger)threshold;
+
+
+
+
 @end

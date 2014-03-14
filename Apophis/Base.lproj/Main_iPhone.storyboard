@@ -67,8 +67,48 @@
                         <sections>
                             <tableViewSection id="SjE-ia-b1g">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="83" id="t9d-PJ-u2p">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="120" id="cB4-by-dZG">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cB4-by-dZG" id="bYV-4X-qCT">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="119"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Enc-Jy-aYx">
+                                                    <rect key="frame" x="18" y="80" width="284" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="thresholdSliderValueChanged:" destination="F57-Tv-DWu" eventType="valueChanged" id="E82-tF-Ncs"/>
+                                                    </connections>
+                                                </slider>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Q5L-3K-cFc">
+                                                    <rect key="frame" x="20" y="8" width="280" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <segments>
+                                                        <segment title="&lt;"/>
+                                                        <segment title=">"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="compareSegmentValueChanged:" destination="F57-Tv-DWu" eventType="valueChanged" id="xF6-TZ-Uws"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6xm-L4-n8x">
+                                                    <rect key="frame" x="20" y="44" width="280" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <segments>
+                                                        <segment title="Blue"/>
+                                                        <segment title="Green"/>
+                                                        <segment title="Red"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="colorSegmentValueChanged:" destination="F57-Tv-DWu" eventType="valueChanged" id="Tps-PS-KiG"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="83" id="t9d-PJ-u2p">
+                                        <rect key="frame" x="0.0" y="120" width="320" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t9d-PJ-u2p" id="jyq-PE-7kY">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
@@ -109,8 +149,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="83" id="xsG-hB-F1y">
-                                        <rect key="frame" x="0.0" y="83" width="320" height="83"/>
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="83" id="xsG-hB-F1y">
+                                        <rect key="frame" x="0.0" y="203" width="320" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xsG-hB-F1y" id="fl4-g7-Ppr">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
@@ -151,8 +191,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="83" id="XNf-5i-DcD">
-                                        <rect key="frame" x="0.0" y="166" width="320" height="83"/>
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="83" id="XNf-5i-DcD">
+                                        <rect key="frame" x="0.0" y="286" width="320" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XNf-5i-DcD" id="o0Y-Tq-ajy">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
@@ -206,12 +246,15 @@
                         <outlet property="blueSegment" destination="hOb-2l-DDy" id="7sn-bw-wVq"/>
                         <outlet property="blueSlider" destination="2h5-tn-myR" id="9my-4K-mjH"/>
                         <outlet property="blueSwitch" destination="gIT-Q0-0ZZ" id="UqF-Mr-rTZ"/>
+                        <outlet property="colorSegment" destination="6xm-L4-n8x" id="1pa-kY-ZCy"/>
+                        <outlet property="compareSegment" destination="Q5L-3K-cFc" id="9ta-a9-KyZ"/>
                         <outlet property="greenSegment" destination="7D7-jh-Y4f" id="Dlz-7y-GAj"/>
                         <outlet property="greenSlider" destination="W4W-r4-hns" id="TBn-Zl-1gC"/>
                         <outlet property="greenSwitch" destination="qov-hE-h6W" id="Ell-8B-cFx"/>
                         <outlet property="redSegment" destination="pBS-VS-O28" id="2Rf-bH-Y6d"/>
                         <outlet property="redSlider" destination="BdW-6A-1lW" id="9Dm-gu-krH"/>
                         <outlet property="redSwitch" destination="vmZ-1U-MZ2" id="eYO-QQ-EWe"/>
+                        <outlet property="thresholdSlider" destination="Enc-Jy-aYx" id="jYF-Xb-cas"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBH-Z5-I12" userLabel="First Responder" sceneMemberID="firstResponder"/>

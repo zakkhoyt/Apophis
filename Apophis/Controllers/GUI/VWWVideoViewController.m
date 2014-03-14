@@ -324,10 +324,14 @@
 //    CGFloat h = self.view.bounds.size.height;
 //    CGFloat x = self.view.bounds.size.width - w;
 //    CGFloat y = 0;
-    CGFloat w = self.view.bounds.size.width;;
-    CGFloat h = (self.view.bounds.size.height - self.toolbar.bounds.size.height) / 2.0;
+//    CGFloat w = self.view.bounds.size.width;
+//    CGFloat h = (self.view.bounds.size.height - self.toolbar.bounds.size.height) / 2.0;
+//    CGFloat x = 0;
+//    CGFloat y = (self.view.bounds.size.height - self.toolbar.bounds.size.height) / 2.0;
+    CGFloat w = self.view.bounds.size.width;
+    CGFloat h = 120;
     CGFloat x = 0;
-    CGFloat y = (self.view.bounds.size.height - self.toolbar.bounds.size.height) / 2.0;
+    CGFloat y = self.view.bounds.size.height - self.toolbar.bounds.size.height - 120.0;
 
     CGRect frameForView = CGRectMake(x, y, w, h);
     VWW_LOG_DEBUG(@"Child VC frame: %@", NSStringFromCGRect(frameForView));

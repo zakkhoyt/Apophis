@@ -23,6 +23,11 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *blueSegment;
 
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *compareSegment;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *colorSegment;
+@property (weak, nonatomic) IBOutlet UISlider *thresholdSlider;
+
+
 @end
 
 @implementation VWWSettingsTableViewController
@@ -45,6 +50,9 @@
     self.greenSlider.maximumValue = 0xFF;
     self.blueSlider.minimumValue = 0;
     self.blueSlider.maximumValue = 0xFF;
+    
+    self.thresholdSlider.minimumValue = 0;
+    self.thresholdSlider.maximumValue = 0xFF;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -61,6 +69,10 @@
     self.redSegment.selectedSegmentIndex = [VWWUserDefaults redCompare];
     self.greenSegment.selectedSegmentIndex = [VWWUserDefaults greenCompare];
     self.blueSegment.selectedSegmentIndex = [VWWUserDefaults blueThreshold];
+    
+    self.compareSegment.selectedSegmentIndex = [VWWUserDefaults compare];
+    self.colorSegment.selectedSegmentIndex = [VWWUserDefaults color];
+    self.thresholdSlider.value = [VWWUserDefaults threshold];
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,6 +82,22 @@
 }
 
 #pragma mark IBActions
+
+
+- (IBAction)compareSegmentValueChanged:(UISegmentedControl*)sender {
+    [VWWUserDefaults setCompare:sender.selectedSegmentIndex];
+}
+
+- (IBAction)colorSegmentValueChanged:(UISegmentedControl*)sender {
+    [VWWUserDefaults setColor:sender.selectedSegmentIndex];
+}
+- (IBAction)thresholdSliderValueChanged:(UISlider*)sender {
+    [VWWUserDefaults setThreshold:sender.value];
+}
+
+
+
+
 - (IBAction)redSwitchValueChanged:(UISwitch*)sender {
     [VWWUserDefaults setFilterRedPixels:sender.on];
 }

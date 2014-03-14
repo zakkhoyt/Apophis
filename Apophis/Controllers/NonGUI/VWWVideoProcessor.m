@@ -386,23 +386,57 @@
 	int bufferHeight = (int)CVPixelBufferGetHeight(pixelBuffer);
 	unsigned char *pixel = (unsigned char *)CVPixelBufferGetBaseAddress(pixelBuffer);
     
+    // It is slow to read from user defaults, so let's copy values ahead of time.
+    UInt8 color = [VWWUserDefaults color];
+    UInt8 compare = [VWWUserDefaults compare];
+    UInt8 theshold = [VWWUserDefaults threshold];
 	for( int row = 0; row < bufferHeight; row++ ) {
 		for( int column = 0; column < bufferWidth; column++ ) {
-			//pixel[1] = 0; // De-green (second pixel in BGRA is green)
-            if(pixel[0] < 0x30){
-                pixel[0] = 0x00;
-                pixel[1] = 0xFF;
-                pixel[2] = 0x00;
-//                pixel[3] = 0x00;
+            if(color == 0){ // Blue
+                if(compare == 0){
+                    if(pixel[0] < theshold){
+                        pixel[0] = 0xFF;
+                        pixel[1] = 0x00;
+                        pixel[2] = 0x00;
+                    }
+                } else {
+                    if(pixel[0] > theshold){
+                        pixel[0] = 0xFF;
+                        pixel[1] = 0x00;
+                        pixel[2] = 0x00;
+                    }
+                }
+            } else if(color == 1){ // Green
+                if(compare == 0){
+                    if(pixel[1] < theshold){
+                        pixel[0] = 0x00;
+                        pixel[1] = 0xFF;
+                        pixel[2] = 0x00;
+                    }
+                } else {
+                    if(pixel[1] > theshold){
+                        pixel[0] = 0x00;
+                        pixel[1] = 0xFF;
+                        pixel[2] = 0x00;
+                    }
+                }
+
+            } else if(color == 2){ // Red
+                if(compare == 0){
+                    if(pixel[2] < theshold){
+                        pixel[0] = 0x00;
+                        pixel[1] = 0x00;
+                        pixel[2] = 0xFF;
+                    }
+                } else {
+                    if(pixel[2] > theshold){
+                        pixel[0] = 0x00;
+                        pixel[1] = 0x00;
+                        pixel[2] = 0xFF;
+                    }
+                }
+
             }
-//            if([VWWUserDefaults filterRedPixels]){
-//                if([VWWUserDefaults redCompare] == 0){
-//                    
-//                } else {
-//                    
-//                }
-//            }
-            
             
             
             

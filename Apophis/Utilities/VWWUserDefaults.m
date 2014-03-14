@@ -21,9 +21,40 @@ static NSString *VWWUserDefaultsRedCompareKey = @"redCompare";
 static NSString *VWWUserDefaultsGreenCompareKey = @"greenCompare";
 static NSString *VWWUserDefaultsBlueCompareKey = @"blueCompare";
 
-
+static NSString *VWWUserDefaultsCompareKey = @"compare";
+static NSString *VWWUserDefaultsColorKey = @"color";
+static NSString *VWWUserDefaultsThresholdKey = @"threshold";
 
 @implementation VWWUserDefaults
+
++(NSUInteger)compare{
+    NSNumber *thresholdNumber = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsCompareKey];
+    return thresholdNumber == nil ? 0x80 : thresholdNumber.unsignedIntegerValue;
+}
++(void)setCompare:(NSUInteger)compare{
+    [[NSUserDefaults standardUserDefaults] setObject:@(compare) forKey:VWWUserDefaultsCompareKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
++(NSUInteger)color{
+    NSNumber *thresholdNumber = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsColorKey];
+    return thresholdNumber == nil ? 0x80 : thresholdNumber.unsignedIntegerValue;
+}
++(void)setColor:(NSUInteger)color{
+    [[NSUserDefaults standardUserDefaults] setObject:@(color) forKey:VWWUserDefaultsColorKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
++(NSUInteger)threshold{
+    NSNumber *thresholdNumber = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsThresholdKey];
+    return thresholdNumber == nil ? 0x80 : thresholdNumber.unsignedIntegerValue;
+}
++(void)setThreshold:(NSUInteger)threshold{
+    [[NSUserDefaults standardUserDefaults] setObject:@(threshold) forKey:VWWUserDefaultsThresholdKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 
 
