@@ -15,13 +15,22 @@
 		CFB8411E18D2B07700FFAFE2 /* VWWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB8411D18D2B07700FFAFE2 /* VWWAppDelegate.m */; };
 		CFB8412118D2B07700FFAFE2 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFB8411F18D2B07700FFAFE2 /* Main_iPhone.storyboard */; };
 		CFB8412418D2B07700FFAFE2 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFB8412218D2B07700FFAFE2 /* Main_iPad.storyboard */; };
-		CFB8412718D2B07700FFAFE2 /* VWWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB8412618D2B07700FFAFE2 /* VWWViewController.m */; };
 		CFB8412918D2B07700FFAFE2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFB8412818D2B07700FFAFE2 /* Images.xcassets */; };
 		CFB8413018D2B07700FFAFE2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB8412F18D2B07700FFAFE2 /* XCTest.framework */; };
 		CFB8413118D2B07700FFAFE2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB8410D18D2B07700FFAFE2 /* Foundation.framework */; };
 		CFB8413218D2B07700FFAFE2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB8411118D2B07700FFAFE2 /* UIKit.framework */; };
 		CFB8413A18D2B07700FFAFE2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFB8413818D2B07700FFAFE2 /* InfoPlist.strings */; };
 		CFB8413C18D2B07700FFAFE2 /* ApophisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB8413B18D2B07700FFAFE2 /* ApophisTests.m */; };
+		CFB8416418D2B17100FFAFE2 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB8414718D2B17100FFAFE2 /* NSTimer+Blocks.m */; };
+		CFB8416518D2B17100FFAFE2 /* RosyWriterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB8414B18D2B17100FFAFE2 /* RosyWriterViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CFB8416618D2B17100FFAFE2 /* RosyWriterVideoProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB8414E18D2B17100FFAFE2 /* RosyWriterVideoProcessor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CFB8416718D2B17100FFAFE2 /* passThrough.fsh in Resources */ = {isa = PBXBuildFile; fileRef = CFB8415418D2B17100FFAFE2 /* passThrough.fsh */; };
+		CFB8416818D2B17100FFAFE2 /* passThrough.vsh in Resources */ = {isa = PBXBuildFile; fileRef = CFB8415518D2B17100FFAFE2 /* passThrough.vsh */; };
+		CFB8416918D2B17100FFAFE2 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB8415918D2B17100FFAFE2 /* MBProgressHUD.m */; };
+		CFB8416A18D2B17100FFAFE2 /* ShaderUtilities.c in Sources */ = {isa = PBXBuildFile; fileRef = CFB8415B18D2B17100FFAFE2 /* ShaderUtilities.c */; };
+		CFB8416B18D2B17100FFAFE2 /* VWWUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB8415E18D2B17100FFAFE2 /* VWWUserDefaults.m */; };
+		CFB8416C18D2B17100FFAFE2 /* VWWUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB8416018D2B17100FFAFE2 /* VWWUtilities.m */; };
+		CFB8416D18D2B17100FFAFE2 /* RosyWriterPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB8416318D2B17100FFAFE2 /* RosyWriterPreviewView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,14 +56,33 @@
 		CFB8411D18D2B07700FFAFE2 /* VWWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VWWAppDelegate.m; sourceTree = "<group>"; };
 		CFB8412018D2B07700FFAFE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		CFB8412318D2B07700FFAFE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		CFB8412518D2B07700FFAFE2 /* VWWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VWWViewController.h; sourceTree = "<group>"; };
-		CFB8412618D2B07700FFAFE2 /* VWWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VWWViewController.m; sourceTree = "<group>"; };
 		CFB8412818D2B07700FFAFE2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CFB8412E18D2B07700FFAFE2 /* ApophisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApophisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB8412F18D2B07700FFAFE2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CFB8413718D2B07700FFAFE2 /* ApophisTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ApophisTests-Info.plist"; sourceTree = "<group>"; };
 		CFB8413918D2B07700FFAFE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CFB8413B18D2B07700FFAFE2 /* ApophisTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApophisTests.m; sourceTree = "<group>"; };
+		CFB8414618D2B17100FFAFE2 /* NSTimer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Blocks.h"; sourceTree = "<group>"; };
+		CFB8414718D2B17100FFAFE2 /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Blocks.m"; sourceTree = "<group>"; };
+		CFB8414A18D2B17100FFAFE2 /* RosyWriterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RosyWriterViewController.h; sourceTree = "<group>"; };
+		CFB8414B18D2B17100FFAFE2 /* RosyWriterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RosyWriterViewController.m; sourceTree = "<group>"; };
+		CFB8414D18D2B17100FFAFE2 /* RosyWriterVideoProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RosyWriterVideoProcessor.h; sourceTree = "<group>"; };
+		CFB8414E18D2B17100FFAFE2 /* RosyWriterVideoProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RosyWriterVideoProcessor.m; sourceTree = "<group>"; };
+		CFB8415018D2B17100FFAFE2 /* VWWBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWBlocks.h; sourceTree = "<group>"; };
+		CFB8415118D2B17100FFAFE2 /* VWWDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWDefines.h; sourceTree = "<group>"; };
+		CFB8415218D2B17100FFAFE2 /* VWWTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWTypes.h; sourceTree = "<group>"; };
+		CFB8415418D2B17100FFAFE2 /* passThrough.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = passThrough.fsh; sourceTree = "<group>"; };
+		CFB8415518D2B17100FFAFE2 /* passThrough.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = passThrough.vsh; sourceTree = "<group>"; };
+		CFB8415818D2B17100FFAFE2 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		CFB8415918D2B17100FFAFE2 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		CFB8415B18D2B17100FFAFE2 /* ShaderUtilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ShaderUtilities.c; sourceTree = "<group>"; };
+		CFB8415C18D2B17100FFAFE2 /* ShaderUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderUtilities.h; sourceTree = "<group>"; };
+		CFB8415D18D2B17100FFAFE2 /* VWWUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWUserDefaults.h; sourceTree = "<group>"; };
+		CFB8415E18D2B17100FFAFE2 /* VWWUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWUserDefaults.m; sourceTree = "<group>"; };
+		CFB8415F18D2B17100FFAFE2 /* VWWUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWUtilities.h; sourceTree = "<group>"; };
+		CFB8416018D2B17100FFAFE2 /* VWWUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWUtilities.m; sourceTree = "<group>"; };
+		CFB8416218D2B17100FFAFE2 /* RosyWriterPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RosyWriterPreviewView.h; sourceTree = "<group>"; };
+		CFB8416318D2B17100FFAFE2 /* RosyWriterPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RosyWriterPreviewView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,12 +142,17 @@
 		CFB8411318D2B07700FFAFE2 /* Apophis */ = {
 			isa = PBXGroup;
 			children = (
+				CFB8414518D2B17100FFAFE2 /* Categories */,
+				CFB8414818D2B17100FFAFE2 /* Controllers */,
+				CFB8414F18D2B17100FFAFE2 /* Include */,
+				CFB8415318D2B17100FFAFE2 /* Shaders */,
+				CFB8415618D2B17100FFAFE2 /* ThirdParty */,
+				CFB8415A18D2B17100FFAFE2 /* Utilities */,
+				CFB8416118D2B17100FFAFE2 /* View */,
 				CFB8411C18D2B07700FFAFE2 /* VWWAppDelegate.h */,
 				CFB8411D18D2B07700FFAFE2 /* VWWAppDelegate.m */,
 				CFB8411F18D2B07700FFAFE2 /* Main_iPhone.storyboard */,
 				CFB8412218D2B07700FFAFE2 /* Main_iPad.storyboard */,
-				CFB8412518D2B07700FFAFE2 /* VWWViewController.h */,
-				CFB8412618D2B07700FFAFE2 /* VWWViewController.m */,
 				CFB8412818D2B07700FFAFE2 /* Images.xcassets */,
 				CFB8411418D2B07700FFAFE2 /* Supporting Files */,
 			);
@@ -153,6 +186,100 @@
 				CFB8413818D2B07700FFAFE2 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CFB8414518D2B17100FFAFE2 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CFB8414618D2B17100FFAFE2 /* NSTimer+Blocks.h */,
+				CFB8414718D2B17100FFAFE2 /* NSTimer+Blocks.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		CFB8414818D2B17100FFAFE2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CFB8414918D2B17100FFAFE2 /* GUI */,
+				CFB8414C18D2B17100FFAFE2 /* NonGUI */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CFB8414918D2B17100FFAFE2 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				CFB8414A18D2B17100FFAFE2 /* RosyWriterViewController.h */,
+				CFB8414B18D2B17100FFAFE2 /* RosyWriterViewController.m */,
+			);
+			path = GUI;
+			sourceTree = "<group>";
+		};
+		CFB8414C18D2B17100FFAFE2 /* NonGUI */ = {
+			isa = PBXGroup;
+			children = (
+				CFB8414D18D2B17100FFAFE2 /* RosyWriterVideoProcessor.h */,
+				CFB8414E18D2B17100FFAFE2 /* RosyWriterVideoProcessor.m */,
+			);
+			path = NonGUI;
+			sourceTree = "<group>";
+		};
+		CFB8414F18D2B17100FFAFE2 /* Include */ = {
+			isa = PBXGroup;
+			children = (
+				CFB8415018D2B17100FFAFE2 /* VWWBlocks.h */,
+				CFB8415118D2B17100FFAFE2 /* VWWDefines.h */,
+				CFB8415218D2B17100FFAFE2 /* VWWTypes.h */,
+			);
+			path = Include;
+			sourceTree = "<group>";
+		};
+		CFB8415318D2B17100FFAFE2 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				CFB8415418D2B17100FFAFE2 /* passThrough.fsh */,
+				CFB8415518D2B17100FFAFE2 /* passThrough.vsh */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		CFB8415618D2B17100FFAFE2 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				CFB8415718D2B17100FFAFE2 /* MBProgressHUD */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		CFB8415718D2B17100FFAFE2 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				CFB8415818D2B17100FFAFE2 /* MBProgressHUD.h */,
+				CFB8415918D2B17100FFAFE2 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		CFB8415A18D2B17100FFAFE2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CFB8415B18D2B17100FFAFE2 /* ShaderUtilities.c */,
+				CFB8415C18D2B17100FFAFE2 /* ShaderUtilities.h */,
+				CFB8415D18D2B17100FFAFE2 /* VWWUserDefaults.h */,
+				CFB8415E18D2B17100FFAFE2 /* VWWUserDefaults.m */,
+				CFB8415F18D2B17100FFAFE2 /* VWWUtilities.h */,
+				CFB8416018D2B17100FFAFE2 /* VWWUtilities.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		CFB8416118D2B17100FFAFE2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CFB8416218D2B17100FFAFE2 /* RosyWriterPreviewView.h */,
+				CFB8416318D2B17100FFAFE2 /* RosyWriterPreviewView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,10 +359,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFB8416818D2B17100FFAFE2 /* passThrough.vsh in Resources */,
 				CFB8412418D2B07700FFAFE2 /* Main_iPad.storyboard in Resources */,
 				CFB8412918D2B07700FFAFE2 /* Images.xcassets in Resources */,
 				CFB8412118D2B07700FFAFE2 /* Main_iPhone.storyboard in Resources */,
 				CFB8411818D2B07700FFAFE2 /* InfoPlist.strings in Resources */,
+				CFB8416718D2B17100FFAFE2 /* passThrough.fsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,9 +383,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFB8412718D2B07700FFAFE2 /* VWWViewController.m in Sources */,
+				CFB8416418D2B17100FFAFE2 /* NSTimer+Blocks.m in Sources */,
+				CFB8416918D2B17100FFAFE2 /* MBProgressHUD.m in Sources */,
+				CFB8416C18D2B17100FFAFE2 /* VWWUtilities.m in Sources */,
+				CFB8416D18D2B17100FFAFE2 /* RosyWriterPreviewView.m in Sources */,
 				CFB8411A18D2B07700FFAFE2 /* main.m in Sources */,
+				CFB8416A18D2B17100FFAFE2 /* ShaderUtilities.c in Sources */,
+				CFB8416518D2B17100FFAFE2 /* RosyWriterViewController.m in Sources */,
 				CFB8411E18D2B07700FFAFE2 /* VWWAppDelegate.m in Sources */,
+				CFB8416618D2B17100FFAFE2 /* RosyWriterVideoProcessor.m in Sources */,
+				CFB8416B18D2B17100FFAFE2 /* VWWUserDefaults.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +527,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Apophis/Apophis-Prefix.pch";
 				INFOPLIST_FILE = "Apophis/Apophis-Info.plist";
@@ -404,6 +541,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Apophis/Apophis-Prefix.pch";
 				INFOPLIST_FILE = "Apophis/Apophis-Info.plist";
@@ -471,6 +609,7 @@
 				CFB8414118D2B07700FFAFE2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CFB8414218D2B07700FFAFE2 /* Build configuration list for PBXNativeTarget "ApophisTests" */ = {
 			isa = XCConfigurationList;
@@ -479,6 +618,7 @@
 				CFB8414418D2B07700FFAFE2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

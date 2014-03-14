@@ -35,11 +35,6 @@
 +(void)setUpdateFrequency:(NSUInteger)updateFrequency;
 
 
-+(VWWUnitType)units;
-+(void)setUnits:(VWWUnitType)units;
-
-+(VWWOffsetType)offset;
-+(void)setOffset:(VWWOffsetType)offset;
 
 
 

@@ -93,24 +93,6 @@ static NSString *VWWUserDefaultsUpdateFrequencyKey = @"updateFrequency";
 }
 
 
-+(VWWUnitType)units{
-    NSNumber *unitsNumber = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsUnitsKey];
-    return (VWWUnitType)(unitsNumber ? unitsNumber.integerValue : 0);
-}
-+(void)setUnits:(VWWUnitType)units{
-    [[NSUserDefaults standardUserDefaults] setObject:@((NSUInteger)units) forKey:VWWUserDefaultsUnitsKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-+(VWWOffsetType)offset{
-    NSNumber *offsetNumber = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsOffsetKey];
-    return (VWWOffsetType)(offsetNumber ? offsetNumber.integerValue : 0);
-}
-+(void)setOffset:(VWWOffsetType)offset{
-    [[NSUserDefaults standardUserDefaults] setObject:@((NSUInteger)offset) forKey:VWWUserDefaultsOffsetKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
 
 
 
